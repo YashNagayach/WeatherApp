@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.weatherapplication.repository.WeatherRepository
 
 
-class MyViewModelFactory(private val repository: WeatherRepository,private val context: Context) :
+class MyViewModelFactory(private val repository: WeatherRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return WeatherViewModel(repository,context) as T
+        return WeatherViewModel(repository) as T
     }
 }

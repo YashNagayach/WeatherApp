@@ -29,13 +29,7 @@ fun isInternetAvailable(context: Context): Boolean {
     return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
 
 }
- fun showCityNotFoundDialog(context: Context) {
-    val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-    builder.setTitle("City Not Found")
-    builder.setMessage("The city you entered could not be found. Please try again.")
-    builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which -> dialog.dismiss() })
-    builder.show()
-}
+
 fun showNoInternetDialog(context: Context) {
     val builder: AlertDialog.Builder = AlertDialog.Builder(context)
     builder.setTitle("No Internet Connection")

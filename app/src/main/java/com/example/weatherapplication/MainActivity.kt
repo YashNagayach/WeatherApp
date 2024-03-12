@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val repository = WeatherRepository(RetrofitInstance.retrofit)
-        val viewModelFactory = MyViewModelFactory(repository,this)
+        val viewModelFactory = MyViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(WeatherViewModel::class.java)
 
         // Observe weather data
