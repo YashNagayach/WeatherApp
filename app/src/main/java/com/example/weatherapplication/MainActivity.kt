@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -113,7 +114,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun callApi(city: String) {
         if(isInternetAvailable(this)){
-            viewModel.fetchWeather(city)
+            binding.progressBar.visibility= View.VISIBLE
+            viewModel.fetchWeather(city){
+                binding.progressBar.visibility= View.GONE
+            }
         }else{
             showNoInternetDialog(this)
         }

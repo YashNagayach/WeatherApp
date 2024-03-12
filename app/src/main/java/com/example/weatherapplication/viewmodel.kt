@@ -13,7 +13,7 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
     private val _weather = MutableLiveData<Weather>()
     val weather: LiveData<Weather> = _weather
 
-    fun fetchWeather(query: String) {
+    fun fetchWeather(query: String, callback: () -> Unit) {
         viewModelScope.launch {
             try {
                 val result = repository.getWeather(query)
@@ -21,6 +21,8 @@ class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() 
                 Log.d("response", result.toString())
             } catch (e: Exception) {
                 Log.d("response", e.message.toString())
+            }finally {
+                callback.invoke()
             }
         }
     }
